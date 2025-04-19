@@ -25,7 +25,7 @@ if uploaded_file:
 else:
     st.info("Please upload a CSV file to get started")
 
-df['sma_20'] = df['pric'].rolling(window=20).mean()
+df['sma_20'] = df['price'].rolling(window=20).mean()
 df['sma_100'] = df['price'].rolling(window=100).mean()
 
 st.subheader("📈 Price with Moving Averages")
