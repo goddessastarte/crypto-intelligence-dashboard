@@ -10,25 +10,24 @@ uploaded_file = st.file_uploader("Upload your crypto CSV", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-    df = df[0].str.split(",",expand=True)
     st.write("Columns detected:", df.columns.tolist())
     st.subheader("Raw Data")
     st.dataframe(df.head())
 
-    if 'Date' in df.columns:
-        df['Date'] = pd.to_datetime(df['Date'])
-        df = df.sort_values('Date')
+    if '' in df.columns:
+        df['snapped_at'] = pd.to_datetime(df['snapped_at'])
+        df = df.sort_values('sna^pped_at')
 
-        st.line_chart(df.set_index("Date")["Close"])
+        st.line_chart(df.set_index("snapped_at")["price"])
 
-        st.subheader("Closing price over time")
+        st.subheader("price over time")
         plt.figure(figsize=(10, 4))
-        plt.plot(df['Date'], df['Close'], label='Close', color='blue')
+        plt.plot(df['snapped_at'], df['price'], label='Date', color='price')
         plt.xlabel("Date")
         plt.ylabel("Price")
         plt.title("Crypto Price Trend")
         st.pyplot(plt) 
     else:
-        st.warning("This CSV has no 'Date' columns.")
+        st.warning("This CSV has no 'snapped_at' columns.")
 else:
     st.info("Please upload a CSV file to get started")
