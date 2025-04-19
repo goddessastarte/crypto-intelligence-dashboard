@@ -23,18 +23,6 @@ if uploaded_file:
         df['sma_20'] = df['price'].rolling(window=20).mean()
         df['sma_100'] = df['price'].rolling(window=100).mean()
 
-        st.subheader("📈 Price with Moving Averages")
-
-        plt.figure(figsize=(10, 4))
-        plt.plot(df['date'], df['price'], label="Close Price")
-        plt.plot(df['date'], df['sma_20'], label="SMA 20", linestyle='--')
-        plt.plot(df['date'], df['sma_100'], label="SMA 100", linestyle=':')
-        plt.xlabel("Date")
-        plt.ylabel("Price")
-        plt.legend()
-        plt.title("Price + Moving Averages")
-        st.pyplot(plt)
-
         fig = px.line(df, x='date', y=['price', 'sma_20', 'sma_100'],
               labels={'value': 'Price', 'date': 'Date'},
               title='Price with Moving Averages')
