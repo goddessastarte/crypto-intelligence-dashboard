@@ -20,15 +20,7 @@ if uploaded_file:
         df = df.sort_values('date')
 
         st.line_chart(df.set_index("date")["price"])
-        """
-        st.subheader("price over time")
-        plt.figure(figsize=(10, 4))
-        plt.plot(df['snapped_at'], df['price'], label='Date', color='price')
-        plt.xlabel("Date")
-        plt.ylabel("Price")
-        plt.title("Crypto Price Trend")
-        st.pyplot(plt) 
-        """
+
     else:
         st.warning("This CSV has no 'snapped_at' columns.")
 else:
