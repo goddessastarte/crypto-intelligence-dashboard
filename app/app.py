@@ -19,7 +19,7 @@ if uploaded_file:
         df = df[["date", "price"]]
         df = df.sort_values('date')
 
-        st.line_chart(df.set_index("snapped_at")["price"])
+        st.line_chart(df.set_index("date")["price"])
         """
         st.subheader("price over time")
         plt.figure(figsize=(10, 4))
