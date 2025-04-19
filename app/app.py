@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-from statsmodels.tsa.arima.model import ARIMA
 
 st.set_page_config(page_title="Crypto Intelligence", layout="wide")
 
