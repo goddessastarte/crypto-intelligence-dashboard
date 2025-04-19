@@ -35,7 +35,7 @@ if uploaded_file:
         plt.title("Price + Moving Averages")
         st.pyplot(plt)
 
-        fig = px.line(df, x='date', y=['close', 'sma_20', 'sma_50'],
+        fig = px.line(df, x='date', y=['price', 'sma_20', 'sma_50'],
               labels={'value': 'Price', 'date': 'Date'},
               title='Price with Moving Averages')
         st.plotly_chart(fig, use_container_width=True)
