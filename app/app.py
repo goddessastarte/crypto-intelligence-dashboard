@@ -10,6 +10,7 @@ uploaded_file = st.file_uploader("Upload your crypto CSV", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
+    df = df[0].str.split(",",expand=True)
     st.write("Columns detected:", df.columns.tolist())
     st.subheader("Raw Data")
     st.dataframe(df.head())
