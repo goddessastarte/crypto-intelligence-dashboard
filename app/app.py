@@ -14,12 +14,13 @@ if uploaded_file:
     st.subheader("Raw Data")
     st.dataframe(df.head())
 
-    if '' in df.columns:
-        df['snapped_at'] = pd.to_datetime(df['snapped_at'])
-        df = df.sort_values('sna^pped_at')
+    if 'snapped_at' in df.columns:
+        df['date'] = pd.to_datetime(df['snapped_at'].str.replace(" UTC", ""))
+        df = df[["date", "price"]]
+        df = df.sort_values('date')
 
         st.line_chart(df.set_index("snapped_at")["price"])
-
+        """
         st.subheader("price over time")
         plt.figure(figsize=(10, 4))
         plt.plot(df['snapped_at'], df['price'], label='Date', color='price')
@@ -27,6 +28,7 @@ if uploaded_file:
         plt.ylabel("Price")
         plt.title("Crypto Price Trend")
         st.pyplot(plt) 
+        """
     else:
         st.warning("This CSV has no 'snapped_at' columns.")
 else:
