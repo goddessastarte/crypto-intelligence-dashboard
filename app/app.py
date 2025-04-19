@@ -7,10 +7,20 @@ st.set_page_config(page_title="Crypto Intelligence", layout="wide")
 
 st.title("Crypto Intelligence Dashboard")
 
+st.markdown(
+    """
+    - Raw Data View
+    - Moving Averages
+    - Relative Strength Index
+"""
+)
+
 uploaded_file = st.file_uploader("Upload your crypto CSV", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
+    # we use session_state to store the uploaded CSV and access it in all pages
+    st.session_state["df"] = df 
     st.subheader("Raw Data")
     st.dataframe(df.head())
 
