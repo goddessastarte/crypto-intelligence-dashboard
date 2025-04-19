@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 st.set_page_config(page_title="Crypto Intelligence", layout="wide")
 
@@ -33,6 +34,11 @@ if uploaded_file:
         plt.legend()
         plt.title("Price + Moving Averages")
         st.pyplot(plt)
+
+        fig = px.line(df, x='date', y=['close', 'sma_20', 'sma_50'],
+              labels={'value': 'Price', 'date': 'Date'},
+              title='Price with Moving Averages')
+        st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning("This CSV has no 'snapped_at' columns.")
 else:
