@@ -5,6 +5,9 @@ import plotly.express as px
 if "df" in st.session_state:
     df = st.session_state["df"]
 
+
+    st.markdown("### 📊 Select Moving Averages to Display")
+    st.markdown("Use the toggles below to add moving average lines to the price chart.")
     sma_20_checked = st.checkbox("SMA 20")
     sma_30_checked = st.checkbox("SMA 30")
     sma_50_checked = st.checkbox("SMA 50")
