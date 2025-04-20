@@ -6,7 +6,7 @@ if "df" in st.session_state:
     df = st.session_state["df"]
 
     sma_20_checked = st.checkbox("SMA 20")
-    sma_30_checked = st.checkbow("SMA 30")
+    sma_30_checked = st.checkbox("SMA 30")
     sma_50_checked = st.checkbox("SMA 50")
     sma_100_checked = st.checkbox("SMA 100")
 
