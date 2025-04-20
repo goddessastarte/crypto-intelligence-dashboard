@@ -11,7 +11,6 @@ uploaded_file = st.file_uploader("Upload your crypto CSV", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-    # we use session_state to store the uploaded CSV and access it in all pages
     st.subheader("Raw Data")
     st.dataframe(df.head())
 
@@ -19,6 +18,7 @@ if uploaded_file:
         df['date'] = pd.to_datetime(df['snapped_at'].str.replace(" UTC", ""))
         df = df[["date", "price"]]
         df = df.sort_values('date')
+        # we use session_state to store the uploaded CSV and access it in all pages
         st.session_state["df"] = df 
         st.line_chart(df.set_index("date")["price"])
         
