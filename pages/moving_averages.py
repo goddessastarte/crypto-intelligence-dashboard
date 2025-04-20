@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd 
-import plotly as px
+import plotly.express as px
 
 if "df" in st.session_state:
     df = st.session_state["df"]
